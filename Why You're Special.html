@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>To My Best Friend</title>
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #2c1810 0%, #1a0f08 100%);
+  font-family: 'Playfair Display', Georgia, serif;
+  overflow: hidden;
+}
+
+.card {
+  width: 380px;
+  height: 520px;
+  background: linear-gradient(145deg, #fff8e1 0%, #fff3e0 50%, #f9e4b7 100%);
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 20px 40px rgba(0,0,0,0.4),
+    inset 0 1px 0 rgba(255,255,255,0.9);
+  border: 3px solid #d4af37;
+  padding: 30px 25px;
+  box-sizing: border-box;
+}
+
+/* Gold frame */
+.card::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  background: linear-gradient(45deg, #d4af37, #f1c40f, #d4af37);
+  border-radius: 18px;
+  z-index: -1;
+  animation: shimmer 4s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 28px;
+  color: #8b0000;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(255,255,255,0.8);
+  position: relative;
+}
+
+.header::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #d4af37, transparent);
+  margin: 10px auto 0;
+}
+
+/* Friendship points */
+.points {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #5d4037;
+  text-align: left;
+  max-height: 320px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.points::-webkit-scrollbar {
+  width: 4px;
+}
+
+.points::-webkit-scrollbar-track {
+  background: rgba(212,175,55,0.1);
+  border-radius: 2px;
+}
+
+.points::-webkit-scrollbar-thumb {
+  background: #d4af37;
+  border-radius: 2px;
+}
+
+.point {
+  margin-bottom: 16px;
+  padding-left: 25px;
+  position: relative;
+  font-family: Georgia, serif;
+}
+
+.point:last-child {
+  margin-bottom: 0;
+}
+
+.point::before {
+  content: attr(data-icon);
+  position: absolute;
+  left: 0;
+  top: 2px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #d4af37;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+}
+
+.signature {
+  position: absolute;
+  bottom: 20px;
+  right: 25px;
+  font-size: 13px;
+  color: #8b4513;
+  font-style: italic;
+  font-family: 'Dancing Script', cursive;
+  letter-spacing: 0.5px;
+}
+
+/* Subtle background pattern */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(1px 1px at 25px 35px, rgba(212,175,55,0.4), transparent),
+    radial-gradient(1px 1px at 60px 75px, rgba(212,175,55,0.3), transparent);
+  background-repeat: repeat;
+  background-size: 150px 120px;
+  opacity: 0.08;
+  animation: float 25s linear infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+</style>
+</head>
+
+<body>
+<div class="card">
+  <div class="header">💖 True Friendship</div>
+  
+  <div class="points">
+    <div class="point" data-icon="😂">Endless Fun<br>Life with you is full of laughter. Even the boring moments become unforgettable because of you.</div>
+    
+    <div class="point" data-icon="🤝">Trust & Loyalty<br>I trust you with everything. You've never broken my confidence, and that means the world to me.</div>
+    
+    <div class="point" data-icon="💡">Understanding Nature<br>You understand me without me even explaining. That connection is rare and special.</div>
+    
+    <div class="point" data-icon="🌟">Positive Energy<br>You always bring good vibes and brighten my mood, even on the worst days.</div>
+    
+    <div class="point" data-icon="💪">Strength & Support<br>You give me strength when I feel weak and push me to become better every day.</div>
+    
+    <div class="point" data-icon="💝">Pure Heart<br>Your kindness and caring nature make you one of the most amazing people I know.</div>
+    
+    <div class="point" data-icon="🚀">Always Encouraging<br>You believe in me even when I don't believe in myself—and that's priceless.</div>
+    
+    <div class="point" data-icon="🌈">Memories Together<br>Every moment with you becomes a beautiful memory I'll cherish forever.</div>
+  </div>
+  
+  <div class="signature">You are always there for me no matter what. Through every high and low, your support never changes.</div>
+</div>
+</style>
+</head>
+</body>
+</html>

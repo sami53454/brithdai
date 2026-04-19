@@ -1,0 +1,130 @@
+// Navbar active link
+document.addEventListener('DOMContentLoaded', function() {
+    const links = document.querySelectorAll('.nav-links a');
+    links.forEach(link => {
+        link.addEventListener('click', function() {
+            links.forEach(l => l.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+});
+
+// Party sound (using Web Audio API)
+function playPartySound() {
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    
+    // Simple happy birthday melody
+    const notes = [262, 294, 330, 349, 392, 440, 494, 523]; // C D E F G A B C
+    let time = 0;
+    
+    notes.forEach((freq, index) => {
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+        
+        oscillator.frequency.value = freq;
+        oscillator.type = 'sine';
+        
+        gainNode.gain.setValueAtTime(0.3, audioContext.currentTime + time);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + time + 0.5);
+        
+        oscillator.start(audioContext.currentTime + time);
+        oscillator.stop(audioContext.currentTime + time + 0.5);
+        
+        time += 0.6;
+    });
+    
+    // Show celebration message
+    alert('🎉 Happy Birthday Fatima! Party music playing! 🎵');
+}
+
+// Confetti effect
+function launchConfetti() {
+    // Simple canvas confetti
+    const canvas = document.createElement('canvas');
+    canvas.style.position = 'fixed';
+    canvas.style.top = '0';
+    canvas.style.left = '0';
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    canvas.style.zIndex = '10000';
+    canvas.style.pointerEvents = 'none';
+    document.body.appendChild(canvas);
+    
+    const ctx = canvas.getContext('2d');
+    const colors = ['#ff6b6b', '#ffd93d', '#4ecdc4', '#a8e6cf', '#ffd700'];
+    
+    function drawConfetti() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        for (let i = 0; i < 100; i++) {
+            const x = (i * 0.01 + Date.now() * 0.01) % canvas.width;
+            const y = (i * 0.02 + Date.now() * 0.005) % canvas.height;
+            const size = Math.random() * 8 + 4;
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            
+            ctx.fillStyle = color;
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.rotate(Date.now() * 0.001 * i);
+            ctx.fillRect(-size/2, -size/2, size, size);
+            ctx.restore();
+        }
+        
+        requestAnimationFrame(drawConfetti);
+    }
+    
+    drawConfetti();
+    
+    // Remove canvas after 5 seconds
+    setTimeout(() => {
+        document.body.removeChild(canvas);
+    }, 5000);
+    
+    alert('🎊🎈 CONFETTI EXPLOSION! Happy Birthday Fatima! 🎉');
+}
+
+// Countdown timer for party page
+if (document.getElementById('countdown')) {
+    let timeLeft = 10; // 10 seconds countdown
+    const countdownEl = document.getElementById('countdown');
+    
+    const timer = setInterval(() => {
+        timeLeft--;
+        countdownEl.textContent = `${timeLeft}s`;
+        
+        if (timeLeft <= 0) {
+            clearInterval(timer);
+            countdownEl.innerHTML = '🎉 PARTY STARTED! 🎉';
+            countdownEl.style.color = '#ffd700';
+        }
+    }, 1000);
+}
+
+// Wish button functionality
+const wishBtn = document.querySelector('.wish-btn');
+if (wishBtn) {
+    wishBtn.addEventListener('click', function() {
+        const textarea = document.querySelector('.custom-wish textarea');
+        const wish = textarea.value.trim();
+        
+        if (wish) {
+            alert('✨ Your beautiful wish has been sent to Fatima! She\'ll love it! 💖');
+            textarea.value = '';
+        } else {
+            alert('Please write a wish first! 💕');
+        }
+    });
+}
+
+// Smooth scrolling for navigation
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
